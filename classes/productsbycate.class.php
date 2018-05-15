@@ -6,7 +6,7 @@ class ProductsbyCate extends Database{
         parent::__construct();
         $this -> query =
         'SELECT * FROM productTable WHERE avaliable=1 and productTable.categoryID=?';
-        
+
         $this -> getProducts($category);
     }
     private function getProducts($category){

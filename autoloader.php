@@ -7,6 +7,5 @@ function loadClass($classname){
     //include the file from directory
     include($root . '/' . $classdir . '/' . $classfile);
 }
-
 spl_autoload_register('loadClass');
 ?>

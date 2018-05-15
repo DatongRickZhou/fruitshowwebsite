@@ -1,5 +1,8 @@
 <?php include('autoloader.php'); 
-$products_obj =new Products();
+if( isset($_GET["categoriesID"]) ){
+  $category= $_GET["categoriesID"];
+  $products_obj=new ProductsbyCate($category);
+}
 $categories_obj = new Categories();
 ?>
 <!doctype html>
@@ -7,7 +10,7 @@ $categories_obj = new Categories();
     <?php include ('includes/head.php'); ?>
 <body>
     <?php include('includes/nivbar.php'); ?>
-    <div class=container>
+<div class=container>
         <div class="row">
             <div class="col-sm-2">
                 <?php
@@ -44,14 +47,13 @@ $categories_obj = new Categories();
           $product_description = $product["productDes"];
           $product_image = $product["productImage_file_name"];
           $product_quantity=$product["quantity"];
-          
           $col_counter++;
           if($col_counter == 1){
             echo "<div class=\"row\">";
           }
           echo "<div class=\"col-sm-3 product-column\">";
           echo "<h3 class=\"product-name\">$product_name</h3>";
-          echo "<img class=\"product-thumbnail img-fluid\" src=\"images/products/$product_image\">";
+          echo "<img class=\"product-thumbnail img-fluid\" src=\"images/productimages/$product_image\">";
           echo "<p class=\"price\">$product_price</p>";
           echo "<p class=\"quantity\">quantity:$product_quantity</p>";
           // echo "<p>product id: $id</p>";
@@ -69,6 +71,5 @@ $categories_obj = new Categories();
             </div>
         </div> <!--row-->
     </div> <!-- container --> 
-    
-    </body>
+</body>
 </html>

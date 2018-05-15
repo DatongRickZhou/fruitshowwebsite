@@ -2,7 +2,6 @@
 class Products extends Database{
     private $query;
     public $products = array();
-    //hey Datong, the function name is __construct, you wrote _construct()
     public function __construct(){
         parent::__construct();
         $this -> query =

@@ -1,20 +1,18 @@
 <?php
-class Products extends Database{
+class ProductsbyCate extends Database{
     private $query;
     public $products = array();
-    //hey Datong, the function name is __construct, you wrote _construct()
-    public function __construct(){
+    public function __construct($category){
         parent::__construct();
         $this -> query =
         'SELECT * FROM productTable WHERE avaliable=1 and productTable.categoryID=?';
         
-        $this -> getProducts();
+        $this -> getProducts($category);
     }
     private function getProducts($category){
         $statement = $this -> connection -> prepare($this -> query);
-        $statement->bind_parm('s',$category);
-        $statement -> execute()
-        else{
+        $statement->bind_param('i',$category);
+        $statement -> execute();
         $result = $statement -> get_result();
         if($result->num_rows>0){
             while($row = $result->fetch_assoc()){
@@ -24,8 +22,6 @@ class Products extends Database{
         else{
             throw new Exception("query returned no result");
         }
-        }
-        
     }
 }
 ?>

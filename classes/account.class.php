@@ -32,12 +32,10 @@ class account extends Database{
         return true;
       }
       else{
-        //database error
         return false;
       }
     }
     else{
-      //process errors
     }
     
   }

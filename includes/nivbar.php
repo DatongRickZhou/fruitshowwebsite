@@ -28,7 +28,7 @@ li a:hover {
 
 <div class="nivbar">
 <ul>
-  <li><a class="active" href="#logout">Logout</a></li>
+  <li><a class="active" href="login.php">login</a></li>
   <img src="indexpic" />
   <li><a href="#Cart">Cart</a></li>
   <li><a href="#Favourite">Favourite</a></li>

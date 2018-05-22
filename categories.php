@@ -16,6 +16,8 @@ $categories_obj = new Categories();
                 <?php
                 if(count($categories_obj->categories)>0){
                     $col_counter =0;
+                    echo "<ul>";
+                    echo "<li><a href=\"index.php\">All Products</a></li>";
                     foreach ($categories_obj->categories as $categories) {
                         $categoryID =$categories["categoryID"];
                         $categoryName=$categories["categoryName"];
@@ -23,11 +25,11 @@ $categories_obj = new Categories();
                         $col_counter++;
                         
                         if($col_counter==1){
-                            echo "<ul>";
+                           
                             echo "<li><a class=\"active\" href=\"categories.php?categoriesID=$categoryID\">$categoryName</a></li>";
                         }
                         else{
-                            echo "<li><a href=\"categories.php?categoriesID=$categoryID\">News</a></li>";
+                            echo "<li><a href=\"categories.php?categoriesID=$categoryID\">$categoryName</a></li>";
                         }
                     }
                     echo "</ul>";

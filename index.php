@@ -38,7 +38,6 @@ $categories_obj = new Categories();
                 if( count($products_obj -> products) > 0 ){
         //output the products
         $col_counter = 0;
-        
         foreach( $products_obj -> products as $product){
           $product_id = $product["productID"];
           $product_name = $product["productName"];

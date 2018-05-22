@@ -1,12 +1,24 @@
-<?php include('autoloader.php'); 
+<?php include('autoloader.php');
+if( $_SERVER["REQUEST_METHOD"] == "POST"){
+$username=$_POST['username'];  
+$password=$_POST['password'];  
+$query=mysqli_query($link,"SELECT userName,userPassword FROM userTable WHERE userName = '$username'");
+$row = mysqli_fetch_array($query);  
+if($_POST['submit']){      
+    if($row['username']==$username &&$row['password']==$password){  
+        setcookie('uname',$username,time()+7200);  
+        echo "<script>alert('successfully');window.location= 'index.php';</script>";  
+    }  
+    else echo "<script>alert('failed');history.go(-1)</script>"; 
+}  
+}
 ?>
+
 <!doctype html>
 <html>
   <?php include ('includes/head.php'); ?>
   <body>
     <?php include('includes/nivbar.php'); ?>
-    
-    
     <script type="text/javascript">  
          $("#login-button").click(function(event){  
                  event.preventDefault();  
@@ -14,7 +26,7 @@
              $('.wrapper').addClass('form-success');  
         });  
         function check(){  
-        {  
+        
           if(form.username.value == "")
           {  
             alert("enter your user name");  
@@ -30,24 +42,11 @@
         }  
     </script> 
     
+    
     <div class="wrapper"></div>
         <div class="container content">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <?php
-          if( count($account -> errors) > 0 ){
-            $error_string = implode(' ', $account -> errors );
-             $alert = "<div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">
-                      $error_string
-                      <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                        <span aria-hidden=\"true\">&times;</span>
-                      </button>
-                    </div>";
-            echo $alert;
-          }
-         
-          ?>
-          
           <h4>Login to your account</h4>
           <form id="login-form" method="post" action="login.php" novalidate>
             <div class="form-group">
@@ -61,7 +60,7 @@
               <div class="invalid-feedback">Please type a valid password</div>
             </div>
             <div class="text-center">
-              <button type="submit" id="login-button" name="login" class="btn btn-outline-primary btn-block">Log in</button>
+              <button type="submit" id="login-button" name="login" class="btn btn-outline-primary btn-block" value="submit">Log in</button>
             </div>
             <p class="my-4">Don't have an account? <a href="register.php">Register</a> for a free account</p>
           </form>

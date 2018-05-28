@@ -85,7 +85,6 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
     <script src="/js/register.js"></script>
   </body>
 </html>
-
 <template id="alert-template">
   <div class="alert alert-dismissible fade show" role="alert">
     <span class="alert-message"></span>

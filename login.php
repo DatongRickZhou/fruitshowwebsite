@@ -42,7 +42,6 @@ if($_POST['submit']){
         }  
     </script> 
     
-    
     <div class="wrapper"></div>
         <div class="container content">
       <div class="row">

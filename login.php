@@ -2,6 +2,8 @@
 if( $_SERVER["REQUEST_METHOD"] == "POST"){
 $username=$_POST['username'];  
 $password=$_POST['password'];  
+$db = new Database();
+$link=$db->connection;
 $query=mysqli_query($link,"SELECT userName,userPassword FROM userTable WHERE userName = '$username'");
 $row = mysqli_fetch_array($query);  
 if($_POST['submit']){      

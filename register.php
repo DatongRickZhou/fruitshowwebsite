@@ -10,8 +10,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
   $password = $_POST["password"];
   
   $account = new Account();
-  $registration = $account -> register( $username, $email, $password );
-  
+  $registration = $account -> register( $username, $password, $email );
   $success = array();
   $errors = array();
   
